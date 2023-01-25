@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html><head><title>Flie(r)s</title></head>
+<body>
+<link type="image/png" sizes="128x128" rel="icon" href="favicon.png">
+  Пока что только с zaix, потому что,<s><span style="font-size: 6px">исходя из всех ещё не перечисленных очевидных фактов</span></s><br>
+как бы другие хостинги имеют разные особенности в ссылках(кончаются на название изображения), но попробуйте их.<br>  У вас есть url, например http://d.zaix.ru/2j3d.png.<br> Разделяете его так:
+<br>В первую форму пишите http://d.zaix.ru/<br>
+Во вторую надо писать часть, которую рандомизируют. Например 2j3d<br>
+Точку, .png писать не надо.<br>
+Потом нажмите <button id="button" onclick="getUrl(input1, input2)">сюда</button>.
+  <br>
+  <input id="domen" placeholder="1 форма"></input><br>
+  <input id="random" placeholder="2 форма"></input><br>
+  <div id="cons">Типа ссылка</div>
+  <img id"im"></img>
+<img id='checj' alt="нет такой ссылки мб" style=" " onerror="imgError();">
+<script>var input1 = document.getElementById('domen');
+
+var input2 = document.getElementById('random');
+var div = document.getElementById('cons')
+
+
+let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+
+function imgError() {
+  counting();
+}
+
+
+var clicks = 0;
+
+function imgError() {
+  getUrl(input1, input2)
+}
+
+function getUrl(v, rand) {
+  let val = v.value;
+  var text = rand.value;
+  let ar = text.split('');
+  let va = text;
+  let vag = va.split('')
+  let index = vag.indexOf(vag[Math.floor(Math.random() * vag.length)]);
+  rando = arr[Math.floor(Math.random() * arr.length)];
+  vag[index] = rando
+  let recieve = vag.join('')
+  var url = val + recieve + '.png'
+  cons.innerHTML = url;
+  let ul = url;
+  console.log(ul);
+
+
+  document.getElementById('checj').setAttribute('src', ul)
+ /* document.getElementById('im').setAttribute('src', ul); */return url 
+  
+}</script>
+</body>
+</html>
