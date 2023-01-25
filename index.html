@@ -9,11 +9,12 @@
 Точку, .png писать не надо.<br>
 Потом нажмите <button id="button" onclick="getUrl(input1, input2)">сюда</button>.
   <br>
-  <input id="domen" placeholder="1 форма">http://d.zaix.ru/</input><br>
-  <input id="random" placeholder="2 форма">2j3d</input><br>
+  <input id="domen" placeholder="1 форма"value="http://d.zaix.ru/></input><br>
+  <input id="random" placeholder="2 форма"value="2j3d></input><br>
   <div id="cons">Типа ссылка</div>
-  <img id"im"></img>
+  <img id"im"></img><br> <button id="sa" onclick="save()">сохранить ссылку</button><br>
 <img id='checj' alt="нет такой ссылки мб" style=" " onerror="imgError();">
+<div id="sav"></div>
 <script>var input1 = document.getElementById('domen');
 
 var input2 = document.getElementById('random');
@@ -53,6 +54,18 @@ function getUrl(v, rand) {
   document.getElementById('checj').setAttribute('src', ul)
  /* document.getElementById('im').setAttribute('src', ul); */return url 
   
+}
+function save() {
+  var table = document.createElement('table')
+  var tr1 = document.createElement('tr')
+  var td1 = document.createElement('td')
+  document.getElementById('sav').appendChild(table)
+  table.appendChild(tr1)
+  td1.style = 'border: 1px solid'
+  tr1.appendChild(td1)
+  td1.innerHTML = document.getElementById('cons').innerHTML
+  localStorage.setItem('table', table.innerHTML)
+
 }</script>
 </body>
 </html>
