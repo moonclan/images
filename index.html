@@ -6,11 +6,12 @@
 как бы другие хостинги имеют разные особенности в ссылках(кончаются на название изображения), но попробуйте их.<br>  У вас есть url, например http://d.zaix.ru/2j3d.png.<br> Разделяете его так:
 <br>В первую форму пишите http://d.zaix.ru/<br>
 Во вторую надо писать часть, которую рандомизируют. Например 2j3d<br>
-Точку, .png писать не надо.<br>
+В третьей пишите .png(в случае с другими хостингами пишите /image.png или другое). Например, https://i.ibb.co/ + s31zzZX + /d.png<br>
 Потом нажмите <button id="button" onclick="getUrl(input1, input2)">сюда</button>.
   <br>
   <input id="domen" placeholder="1 форма" value="http://d.zaix.ru/"></input><br>
-  <input id="random" placeholder="2 форма" value="2j3d"></input><br>
+  <input id="random" placeholder="2 форма"value="2j3d"></input><br>
+<input id="3" placeholder="3 форма"value=".png"></input><br>
   <div id="cons">Типа ссылка</div>
   <img id"im"></img><br> <button id="sa" onclick="save()">сохранить ссылку</button><br>
 <img id='checj' alt="нет такой ссылки мб" style=" " onerror="imgError();">
@@ -21,14 +22,38 @@
 
 </div>
 <script>var input1 = document.getElementById('domen');
-
+var input3 = document.getElementById('3');
 var input2 = document.getElementById('random');
 var div = document.getElementById('cons')
 
 
 let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+(function () {
+  input2.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      // можете делать все что угодно со значением текстового поля
+      getUrl(getUrl(input1, input2, input3))
+    }
+  });
+})();
 
+(function () {
+  input1.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      // можете делать все что угодно со значением текстового поля
+      getUrl(getUrl(input1, input2, input3))
+    }
+  });
+})();
+(function () {
+  input3.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      // можете делать все что угодно со значением текстового поля
+      getUrl(getUrl(input1, input2, input3))
+    }
+  });
+})();
 function imgError() {
   counting();
 }
@@ -40,8 +65,10 @@ function imgError() {
   getUrl(input1, input2)
 }
 
-function getUrl(v, rand) {
+function getUrl(v, rand, tree) {
+  var treee = document.getElementById('3');
   let val = v.value;
+  var end = treee.value
   var text = rand.value;
   let ar = text.split('');
   let va = text;
@@ -50,7 +77,7 @@ function getUrl(v, rand) {
   rando = arr[Math.floor(Math.random() * arr.length)];
   vag[index] = rando
   let recieve = vag.join('')
-  var url = val + recieve + '.png'
+  var url = val + recieve + end
   cons.innerHTML = url;
   let ul = url;
   console.log(ul);
@@ -60,7 +87,7 @@ function getUrl(v, rand) {
  /* document.getElementById('im').setAttribute('src', ul); */return url 
   
 }
-  document.getElementById('sav').innerHTML = localStorage.getItem('table')
+document.getElementById('sav').innerHTML = localStorage.getItem('table')
 function save() {
   var table = document.createElement('table')
   var tr1 = document.createElement('tr')
@@ -71,7 +98,7 @@ function save() {
   tr1.appendChild(td1)
   td1.innerHTML = document.getElementById('cons').innerHTML
   localStorage.setItem('table', table.innerHTML)
-
+  
 }</script>
 </body>
 </html>
